@@ -1,1 +1,0 @@
-# Data-Quality-Time-series-Validator-Application-in-Python
