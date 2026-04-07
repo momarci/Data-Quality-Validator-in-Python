@@ -121,12 +121,12 @@ class ValidatorApp:
         self.tab_history = ttk.Frame(notebook)
         self.tab_settings = ttk.Frame(notebook)
 
-        notebook.add(self.tab_input, text="📁 Input")
-        notebook.add(self.tab_preview, text="👁️ Preview")
-        notebook.add(self.tab_log, text="📋 Log")
-        notebook.add(self.tab_results, text="📊 Results")
-        notebook.add(self.tab_history, text="📈 History")
-        notebook.add(self.tab_settings, text="⚙️ Settings")
+        notebook.add(self.tab_input, text="Input")
+        notebook.add(self.tab_preview, text="Preview")
+        notebook.add(self.tab_log, text="Log")
+        notebook.add(self.tab_results, text="Results")
+        notebook.add(self.tab_history, text="History")
+        notebook.add(self.tab_settings, text="Settings")
 
         self._build_input_tab()
         self._build_preview_tab()
@@ -178,7 +178,7 @@ class ValidatorApp:
         scrollbar.pack(side="right", fill="y")
 
     def _build_file_section(self, parent):
-        frame = ttk.LabelFrame(parent, text="1️⃣  Select Dataset File", padding=10)
+        frame = ttk.LabelFrame(parent, text="1️Select Dataset File", padding=10)
         frame.pack(fill="x", padx=10, pady=5)
 
         file_frame = ttk.Frame(frame)
@@ -186,10 +186,10 @@ class ValidatorApp:
 
         ttk.Label(file_frame, text="File Path:", font=("Arial", 10)).pack(side="left", padx=5)
         ttk.Entry(file_frame, textvariable=self.file_path, width=70).pack(side="left", padx=5, fill="x", expand=True)
-        ttk.Button(file_frame, text="📂 Browse", command=self._browse_file, width=15).pack(side="left", padx=5)
+        ttk.Button(file_frame, text="Browse", command=self._browse_file, width=15).pack(side="left", padx=5)
 
     def _build_columns_section(self, parent):
-        frame = ttk.LabelFrame(parent, text="2️⃣  Detected Columns", padding=10)
+        frame = ttk.LabelFrame(parent, text="2️Detected Columns", padding=10)
         frame.pack(fill="x", padx=10, pady=5)
 
         ttk.Label(frame, text="Dataset Columns (detected automatically):", font=("Arial", 10)).pack(anchor="w", pady=(0, 5))
@@ -205,7 +205,7 @@ class ValidatorApp:
         scrollbar.config(command=self.column_list.yview)
 
     def _build_options_section(self, parent):
-        frame = ttk.LabelFrame(parent, text="3️⃣  Data Configuration", padding=10)
+        frame = ttk.LabelFrame(parent, text="3️Data Configuration", padding=10)
         frame.pack(fill="x", padx=10, pady=5)
 
         type_frame = ttk.Frame(frame)
@@ -223,19 +223,19 @@ class ValidatorApp:
 
         date_frame = ttk.Frame(frame)
         date_frame.pack(fill="x", pady=5)
-        ttk.Label(date_frame, text="📅 Date Column (optional):", font=("Arial", 10), width=20).pack(side="left", padx=5)
+        ttk.Label(date_frame, text="Date Column (optional):", font=("Arial", 10), width=20).pack(side="left", padx=5)
         self.date_column_dropdown = ttk.Combobox(date_frame, values=[], state="disabled", width=30)
         self.date_column_dropdown.pack(side="left", padx=5)
 
         entity_frame = ttk.Frame(frame)
         entity_frame.pack(fill="x", pady=5)
-        ttk.Label(entity_frame, text="👥 Entity Column (optional):", font=("Arial", 10), width=20).pack(side="left", padx=5)
+        ttk.Label(entity_frame, text="Entity Column (optional):", font=("Arial", 10), width=20).pack(side="left", padx=5)
         self.entity_column_dropdown = ttk.Combobox(entity_frame, values=[], state="disabled", width=30)
         self.entity_column_dropdown.pack(side="left", padx=5)
 
         output_frame = ttk.Frame(frame)
         output_frame.pack(fill="x", pady=5)
-        ttk.Label(output_frame, text="📁 Output Directory:", font=("Arial", 10), width=20).pack(side="left", padx=5)
+        ttk.Label(output_frame, text="Output Directory:", font=("Arial", 10), width=20).pack(side="left", padx=5)
         ttk.Entry(output_frame, textvariable=self.output_base_dir, width=40).pack(side="left", padx=5, fill="x", expand=True)
         ttk.Button(output_frame, text="Browse", command=self._browse_output_dir, width=12).pack(side="left", padx=5)
 
@@ -243,10 +243,10 @@ class ValidatorApp:
         frame = ttk.Frame(parent)
         frame.pack(fill="x", padx=10, pady=15)
 
-        ttk.Button(frame, text="▶️  Run Validation (F5)", command=self._start_validation_thread, width=25).pack(side="left", padx=5)
-        ttk.Button(frame, text="⏹  Cancel", command=self._cancel_validation, width=20).pack(side="left", padx=5)
-        ttk.Button(frame, text="🌐 Open Report", command=self._open_report, width=20).pack(side="left", padx=5)
-        ttk.Button(frame, text="📂 Open Output Dir", command=self._open_output_dir, width=20).pack(side="left", padx=5)
+        ttk.Button(frame, text="Run Validation (F5)", command=self._start_validation_thread, width=25).pack(side="left", padx=5)
+        ttk.Button(frame, text="Cancel", command=self._cancel_validation, width=20).pack(side="left", padx=5)
+        ttk.Button(frame, text="Open Report", command=self._open_report, width=20).pack(side="left", padx=5)
+        ttk.Button(frame, text="Open Output Dir", command=self._open_output_dir, width=20).pack(side="left", padx=5)
 
     def _open_output_dir(self):
         out = self.output_base_dir.get() or "results"
@@ -395,9 +395,9 @@ class ValidatorApp:
 
         export_frame = ttk.Frame(frame)
         export_frame.pack(fill="x", pady=10)
-        ttk.Button(export_frame, text="💾 Export JSON", command=self._export_json, width=20).pack(side="left", padx=5)
-        ttk.Button(export_frame, text="📋 Export CSV", command=self._export_csv, width=20).pack(side="left", padx=5)
-        ttk.Button(export_frame, text="📄 Export All", command=self._export_all, width=20).pack(side="left", padx=5)
+        ttk.Button(export_frame, text="Export JSON", command=self._export_json, width=20).pack(side="left", padx=5)
+        ttk.Button(export_frame, text="Export CSV", command=self._export_csv, width=20).pack(side="left", padx=5)
+        ttk.Button(export_frame, text="Export All", command=self._export_all, width=20).pack(side="left", padx=5)
 
     def _populate_results_tree(self, results):
         """Populate results tree view. Must be called from main thread."""
@@ -525,8 +525,8 @@ class ValidatorApp:
 
         btn_frame = ttk.Frame(frame)
         btn_frame.pack(fill="x", pady=10)
-        ttk.Button(btn_frame, text="🔄 Load Selected", command=self._load_history_run, width=20).pack(side="left", padx=5)
-        ttk.Button(btn_frame, text="🗑️  Clear History", command=self._clear_history, width=20).pack(side="left", padx=5)
+        ttk.Button(btn_frame, text="Load Selected", command=self._load_history_run, width=20).pack(side="left", padx=5)
+        ttk.Button(btn_frame, text="Clear History", command=self._clear_history, width=20).pack(side="left", padx=5)
 
         self._refresh_history()
 
@@ -571,8 +571,8 @@ class ValidatorApp:
         cache_frame = ttk.LabelFrame(frame, text="Cache & Overrides Management", padding=10)
         cache_frame.pack(fill="x", padx=5, pady=5)
 
-        ttk.Button(cache_frame, text="🗑️  Clear Overrides", command=self._clear_overrides, width=30).pack(anchor="w", padx=5, pady=5)
-        ttk.Button(cache_frame, text="🔄 Reset Application", command=self._reset_application, width=30).pack(anchor="w", padx=5, pady=5)
+        ttk.Button(cache_frame, text="Clear Overrides", command=self._clear_overrides, width=30).pack(anchor="w", padx=5, pady=5)
+        ttk.Button(cache_frame, text="Reset Application", command=self._reset_application, width=30).pack(anchor="w", padx=5, pady=5)
 
         info_frame = ttk.LabelFrame(frame, text="Output Directory Structure", padding=10)
         info_frame.pack(fill="x", padx=5, pady=5)
@@ -600,7 +600,7 @@ Examples:
 
         about_text = scrolledtext.ScrolledText(about_frame, height=10, width=80, font=("Courier", 9))
         about_text.pack(fill="both", expand=True)
-        about_text.insert("1.0", """📊 Data Validator Pro v3.0
+        about_text.insert("1.0", """Data Validator Pro v3.0
 Advanced Dataset Validation & Analysis Tool
 
 Keyboard Shortcuts:
